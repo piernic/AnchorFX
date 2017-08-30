@@ -239,6 +239,13 @@ public final class DockZones extends Stage {
                     filter(z -> !z.isStationZone() && z.getPosition() != DockNode.DockPosition.CENTER).
                     forEach(z -> z.setZoneDisabled(true));
         }
+        if (currentNodeTarget != nodeToMove) {
+            // disable border zones in any zone
+            selectors.
+                    stream().
+                    filter(z -> !z.isStationZone() && z.getPosition() == DockNode.DockPosition.CENTER).
+                    forEach(z -> z.setZoneDisabled(true));
+        }
     }
 
     public boolean searchArea(double x, double y) {
